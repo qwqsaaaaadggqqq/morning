@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Виджет Утро</title>
+<style>
+:root { --bg: #f4f3ee; --card: #ffffff; --line: rgba(31,30,29,.12); --text: #1f1e1d; --text-2: #5f5e5a; --accent: #185fa5; --on-accent: #ffffff; --ok: #3b6d11; --danger: #a32d2d; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1a1a19; --card: #242423; --line: rgba(255,255,255,.1); --text: #f1efe8; --text-2: #b4b2a9; --accent: #85b7eb; --on-accent: #0b0b0b; --ok: #c0dd97; --danger: #f09595; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 -apple-system, system-ui, "Segoe UI", sans-serif; }
+.wrap { max-width: 560px; margin: 0 auto; padding: 28px 16px 48px; }
+h1 { font-size: 24px; font-weight: 600; margin: 0 0 4px; }
+.sub { color: var(--text-2); margin: 0 0 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 14px; }
+ol { margin: 0; padding-left: 20px; }
+li { margin: 8px 0; }
+li span { color: var(--text-2); }
+button { width: 100%; font: inherit; font-weight: 600; padding: 14px; border: 0; border-radius: 12px; background: var(--accent); color: var(--on-accent); cursor: pointer; }
+#status { min-height: 22px; margin-top: 10px; font-size: 14px; text-align: center; color: var(--text-2); }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Виджет «Утро»</h1>
+  <p class="sub">Пары, погода и VPN прямо на экране «Домой» через приложение Scriptable.</p>
+
+  <div class="card">
+    <button id="copy">Скопировать скрипт</button>
+    <div id="status"></div>
+  </div>
+
+  <div class="card">
+    <ol>
+      <li>Поставь <a href="https://apps.apple.com/app/scriptable/id1405459188">Scriptable</a> из App Store.</li>
+      <li>Нажми «Скопировать скрипт» выше.</li>
+      <li>В Scriptable нажми <b>+</b>, вставь текст, сверху переименуй скрипт в «Утро» и нажми «Готово».</li>
+      <li>Нажми на скрипт один раз: откроется меню, там можно посмотреть виджет и отметить оплату VPN.</li>
+      <li>На экране «Домой» зажми пустое место → <b>+</b> слева сверху → Scriptable → выбери размер → «Добавить виджет».</li>
+      <li>Зажми добавленный виджет → «Изменить виджет» → <b>Script</b>: «Утро». <span>When Interacting оставь «Run Script».</span></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <b>Экран блокировки.</b> Зажми экран блокировки → «Настроить» → «Экран блокировки» → нажми на поле виджетов → Scriptable. Узкий длинный виджет показывает следующую пару, погоду и VPN, круглый — время и аудиторию, а строка над часами — коротко всё сразу. Потом нажми на добавленный виджет и выбери скрипт «Утро».
+  </div>
+</div>
+<script>
+const btn = document.getElementById("copy"), status = document.getElementById("status");
+let code = null;
+fetch("morning-widget.js?t=" + Date.now()).then((r) => r.ok ? r.text() : Promise.reject(r.status)).then((t) => { code = t; }).catch(() => {
+  status.textContent = "Не получилось загрузить скрипт, обнови страницу";
+});
+btn.addEventListener("click", async () => {
+  if (!code) { status.textContent = "Скрипт ещё грузится, нажми через секунду"; return; }
+  try {
+    await navigator.clipboard.writeText(code);
+    status.style.color = "var(--ok)";
+    status.textContent = "Скопировано, теперь вставь в Scriptable";
+  } catch {
+    status.style.color = "var(--danger)";
+    status.innerHTML = 'Браузер не дал скопировать. Открой <a href="morning-widget.js">файл скрипта</a>, выдели всё и скопируй вручную';
+  }
+});
+</script>
+</body>
+</html>

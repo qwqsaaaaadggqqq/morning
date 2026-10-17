@@ -17,6 +17,7 @@ GROUP = "24290907/3093"
 SITE = "https://polytech-shedule.ru/data/"
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "schedule.js"
+OUT_JSON = HERE / "schedule.json"  # для виджета Scriptable на айфоне
 
 
 def current_week(today: date) -> int:
@@ -86,6 +87,7 @@ def update() -> bool:
         "lessons": sorted(lessons, key=lambda l: (l["date"], l["n"], l["sub"])),
     }
     OUT.write_text("window.SCHEDULE = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
+    OUT_JSON.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     print(f"Расписание обновлено: {len(data['lessons'])} пар")
     return True
 
