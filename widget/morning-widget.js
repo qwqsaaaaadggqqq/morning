@@ -1,6 +1,7 @@
 // Утро — виджет для Scriptable: пары, погода и оплата VPN.
 // Подходит для всех размеров: маленький, средний, большой и экран блокировки.
 // Нажатие на виджет открывает меню: отметить оплату VPN или открыть дашборд.
+// Без обратных кавычек: при вставке на айфоне они пропадают и скрипт ломается.
 
 const CONFIG = {
   dataUrl: "https://qwqsaaaaadggqqq.github.io/morning/schedule.json",
@@ -33,7 +34,7 @@ const CAMPUS = { "Э": "Энгельса", "П": "Приморский", "О": "
 const PAID_KEY = "morning.vpnPaidFor";
 
 const pad = (n) => String(n).padStart(2, "0");
-const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const iso = (d) => ("" + (d.getFullYear()) + "-" + (pad(d.getMonth() + 1)) + "-" + (pad(d.getDate())));
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 const atTime = (day, hhmm) => { const [h, m] = hhmm.split(":").map(Number); const d = new Date(day); d.setHours(h, m, 0, 0); return d; };
 const plural = (n, a, b, c) => { const m10 = n % 10, m100 = n % 100; return m10 === 1 && m100 !== 11 ? a : m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20) ? b : c; };
@@ -63,7 +64,7 @@ async function loadJSON(url, name) {
 
 function weatherUrl() {
   const { lat, lon } = CONFIG.city;
-  return `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+  return ("https://api.open-meteo.com/v1/forecast?latitude=" + (lat) + "&longitude=" + (lon)) +
     "&current=temperature_2m,weather_code" +
     "&hourly=temperature_2m,precipitation_probability,weather_code" +
     "&daily=temperature_2m_max,temperature_2m_min,weather_code" +
@@ -84,7 +85,7 @@ function lessonsOn(schedule, day) {
       cancelled: items.every(isCancelled),
       start: b ? atTime(day, b[0]) : null,
       end: b ? atTime(day, b[1]) : null,
-      time: b ? b[0] : `${n} пара`,
+      time: b ? b[0] : ("" + (n) + " пара"),
       subject: items.map((l) => l.subject).filter((s, i, a) => a.indexOf(s) === i).join(" / "),
       place: items.filter((l) => !isCancelled(l)).map((l) => [l.aud, CAMPUS[l.campus]].filter(Boolean).join(", ")).filter(Boolean).join(" / "),
       aud: items.filter((l) => !isCancelled(l)).map((l) => l.aud).filter(Boolean).join(" / "),
@@ -111,7 +112,7 @@ function pickDay(schedule, now) {
 function dayLabel(pick) {
   const d = pick.day;
   const name = pick.offset === 0 ? "Сегодня" : pick.offset === 1 ? "Завтра" : cap(DOW[d.getDay()]);
-  return `${name}, ${d.getDate()} ${MON[d.getMonth()]}`;
+  return ("" + (name) + ", " + (d.getDate()) + " " + (MON[d.getMonth()]));
 }
 
 function nextSlot(pick, now) {
@@ -140,7 +141,7 @@ function weatherFor(weather, pick, now) {
   const di = d.time.indexOf(key);
   if (di < 0) return null;
   const isToday = key === iso(now);
-  const at = (hh) => h.time.indexOf(`${key}T${pad(hh)}:00`);
+  const at = (hh) => h.time.indexOf(("" + (key) + "T" + (pad(hh)) + ":00"));
   const hours = [6, 9, 12, 15, 18, 21].map((hh) => {
     const i = at(hh);
     return i < 0 ? null : { hh, temp: Math.round(h.temperature_2m[i]), code: h.weather_code[i], prob: h.precipitation_probability[i] };
@@ -156,7 +157,7 @@ function weatherFor(weather, pick, now) {
   return {
     isToday,
     // Для другого дня «текущей» температуры нет, показываем диапазон с днём недели.
-    range: isToday ? `${Math.round(d.temperature_2m_min[di])}…${Math.round(d.temperature_2m_max[di])}°` : `${DOW_SHORT[pick.day.getDay()]} ${Math.round(d.temperature_2m_min[di])}…${Math.round(d.temperature_2m_max[di])}°`,
+    range: isToday ? ("" + (Math.round(d.temperature_2m_min[di])) + "…" + (Math.round(d.temperature_2m_max[di])) + "°") : ("" + (DOW_SHORT[pick.day.getDay()]) + " " + (Math.round(d.temperature_2m_min[di])) + "…" + (Math.round(d.temperature_2m_max[di])) + "°"),
     temp: Math.round(isToday ? weather.current.temperature_2m : d.temperature_2m_max[di]),
     code: isToday ? weather.current.weather_code : d.weather_code[di],
     min: Math.round(d.temperature_2m_min[di]),
@@ -167,7 +168,7 @@ function weatherFor(weather, pick, now) {
 
 /* ---------- VPN ---------- */
 
-const monthKey = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
+const monthKey = (d) => ("" + (d.getFullYear()) + "-" + (pad(d.getMonth() + 1)));
 const getPaid = () => (Keychain.contains(PAID_KEY) ? Keychain.get(PAID_KEY) : null);
 
 function vpnState(now) {
@@ -177,7 +178,7 @@ function vpnState(now) {
   if (paidThis) due = new Date(due.getFullYear(), due.getMonth() + 1, CONFIG.vpn.day);
   const days = Math.round((due - today) / 86400e3);
   const level = days < 0 || days === 0 ? "danger" : paidThis ? "ok" : days <= 5 ? "warn" : "none";
-  const short = days < 0 ? `просрочен ${-days} дн` : days === 0 ? "сегодня" : `${days} ${plural(days, "день", "дня", "дней")}`;
+  const short = days < 0 ? ("просрочен " + (-days) + " дн") : days === 0 ? "сегодня" : ("" + (days) + " " + (plural(days, "день", "дня", "дней")));
   return { days, due, paidThis, level, short };
 }
 
@@ -235,7 +236,7 @@ function buildSmall(w, data, now) {
   const top = hrow(w, 4);
   if (wx) {
     icon(top, symbolFor(wx.code), 14);
-    if (wx.isToday) txt(top, `${wx.temp}°`, 15, { weight: "medium" });
+    if (wx.isToday) txt(top, ("" + (wx.temp) + "°"), 15, { weight: "medium" });
     top.addSpacer();
     txt(top, wx.range, 11, { color: C.text2 });
   } else {
@@ -254,11 +255,11 @@ function buildSmall(w, data, now) {
   }
   w.addSpacer();
   const bottom = hrow(w, 4);
-  if (vpn.level === "warn" || vpn.level === "danger") pill(bottom, `VPN ${vpn.short}`, vpn.level);
-  else if (wx?.rain) { icon(bottom, "umbrella", 11, C.accent); txt(bottom, `${pad(wx.rain.hh)}:00`, 11, { color: C.accent }); }
+  if (vpn.level === "warn" || vpn.level === "danger") pill(bottom, ("VPN " + (vpn.short)), vpn.level);
+  else if (wx?.rain) { icon(bottom, "umbrella", 11, C.accent); txt(bottom, ("" + (pad(wx.rain.hh)) + ":00"), 11, { color: C.accent }); }
   else {
     const left = pick.slots.filter((s) => !s.cancelled && s !== next && (!next || s.n > next.n)).length;
-    if (next && left) txt(bottom, `ещё ${left} ${plural(left, "пара", "пары", "пар")}`, 11, { color: C.text3 });
+    if (next && left) txt(bottom, ("ещё " + (left) + " " + (plural(left, "пара", "пары", "пар"))), 11, { color: C.text3 });
   }
 }
 
@@ -275,19 +276,19 @@ function buildMedium(w, data, now) {
   icon(city, wx ? symbolFor(wx.code) : "location", 12);
   txt(city, CONFIG.city.name, 11, { color: C.text2 });
   if (wx) {
-    txt(left, `${wx.temp}°`, 30, { weight: "medium" });
+    txt(left, ("" + (wx.temp) + "°"), 30, { weight: "medium" });
     txt(left, wx.range, 11, { color: C.text2 });
     if (wx.rain) {
       left.addSpacer(3);
       const r = hrow(left, 3);
       icon(r, "umbrella", 11, C.accent);
-      txt(r, `${pad(wx.rain.hh)}:00`, 11, { color: C.accent });
+      txt(r, ("" + (pad(wx.rain.hh)) + ":00"), 11, { color: C.accent });
     }
   } else {
     txt(left, "—", 30, { color: C.text3 });
   }
   left.addSpacer();
-  pill(left, `VPN ${vpn.short}`, vpn.level === "none" ? "ok" : vpn.level);
+  pill(left, ("VPN " + (vpn.short)), vpn.level === "none" ? "ok" : vpn.level);
 
   const right = row.addStack();
   right.layoutVertically();
@@ -299,9 +300,9 @@ function buildMedium(w, data, now) {
     const r = hrow(right, 6);
     txt(r, s.time, 11, { color: C.text3 });
     const color = slotColor(s, pick, now);
-    txt(r, s.cancelled ? "отменена" : s.aud ? `${s.subject} · ${s.aud}` : s.subject, 12, { color, weight: color === C.accent ? "medium" : "regular", scale: 0.75 });
+    txt(r, s.cancelled ? "отменена" : s.aud ? ("" + (s.subject) + " · " + (s.aud)) : s.subject, 12, { color, weight: color === C.accent ? "medium" : "regular", scale: 0.75 });
   }
-  if (pick.slots.length > shown.length) txt(right, `+ ещё ${pick.slots.length - shown.length}`, 11, { color: C.text3 });
+  if (pick.slots.length > shown.length) txt(right, ("+ ещё " + (pick.slots.length - shown.length)), 11, { color: C.text3 });
   right.addSpacer();
 }
 
@@ -310,14 +311,14 @@ function buildLarge(w, data, now) {
   const head = hrow(w, 6);
   txt(head, dayLabel(pick), 15, { weight: "bold" });
   head.addSpacer();
-  pill(head, vpn.paidThis ? "VPN оплачен" : `VPN · ${vpn.short}`, vpn.level === "none" ? "ok" : vpn.level);
+  pill(head, vpn.paidThis ? "VPN оплачен" : ("VPN · " + (vpn.short)), vpn.level === "none" ? "ok" : vpn.level);
 
   w.addSpacer(8);
   if (wx) {
     const t = hrow(w, 8);
     icon(t, symbolFor(wx.code), 20);
-    txt(t, `${wx.temp}°`, 26, { weight: "medium" });
-    txt(t, wx.isToday ? `сейчас, днём ${wx.min}…${wx.max}°` : `днём ${wx.min}…${wx.max}°`, 12, { color: C.text2 });
+    txt(t, ("" + (wx.temp) + "°"), 26, { weight: "medium" });
+    txt(t, wx.isToday ? ("сейчас, днём " + (wx.min) + "…" + (wx.max) + "°") : ("днём " + (wx.min) + "…" + (wx.max) + "°"), 12, { color: C.text2 });
     w.addSpacer(8);
     const hours = hrow(w, 0);
     for (const h of wx.hours) {
@@ -327,14 +328,14 @@ function buildLarge(w, data, now) {
       const past = wx.isToday && now.getHours() >= h.hh + 3;
       const c1 = hrow(cell, 0); c1.addSpacer(); txt(c1, pad(h.hh), 10, { color: C.text3 }); c1.addSpacer();
       const c2 = hrow(cell, 0); c2.addSpacer(); icon(c2, symbolFor(h.code), 14, past ? C.text3 : C.text2); c2.addSpacer();
-      const c3 = hrow(cell, 0); c3.addSpacer(); txt(c3, `${h.temp}°`, 12, { weight: "medium", color: past ? C.text3 : h.prob >= 50 ? C.accent : C.text }); c3.addSpacer();
+      const c3 = hrow(cell, 0); c3.addSpacer(); txt(c3, ("" + (h.temp) + "°"), 12, { weight: "medium", color: past ? C.text3 : h.prob >= 50 ? C.accent : C.text }); c3.addSpacer();
       hours.addSpacer();
     }
     w.addSpacer(6);
     const adv = hrow(w, 4);
     if (wx.rain) {
       icon(adv, "umbrella", 12, C.accent);
-      txt(adv, `${wx.rain.snow ? "Снег" : "Дождь"} около ${pad(wx.rain.hh)}:00 (${wx.rain.prob}%), возьми ${wx.rain.snow ? "шапку" : "зонт"}`, 12, { color: C.accent });
+      txt(adv, ("" + (wx.rain.snow ? "Снег" : "Дождь") + " около " + (pad(wx.rain.hh)) + ":00 (" + (wx.rain.prob) + "%), возьми " + (wx.rain.snow ? "шапку" : "зонт")), 12, { color: C.accent });
     } else {
       icon(adv, "checkmark", 11, C.text2);
       txt(adv, "Без осадков", 12, { color: C.text2 });
@@ -356,49 +357,49 @@ function buildLarge(w, data, now) {
     col.layoutVertically();
     const color = slotColor(s, pick, now);
     const title = hrow(col, 4);
-    txt(title, s.cancelled ? `${s.n} пара отменена` : s.subject, 13, { color, weight: s.cancelled ? "regular" : "medium", scale: 0.8 });
+    txt(title, s.cancelled ? ("" + (s.n) + " пара отменена") : s.subject, 13, { color, weight: s.cancelled ? "regular" : "medium", scale: 0.8 });
     if (s.replaced && !s.cancelled) pill(title, "замена", "warn");
     if (!s.cancelled && s.place) txt(col, s.place, 11, { color: C.text2 });
     w.addSpacer(5);
   }
   w.addSpacer();
-  if (data.stale) txt(w, `Нет сети, расписание от ${data.stale}`, 10, { color: C.warn });
+  if (data.stale) txt(w, ("Нет сети, расписание от " + (data.stale)), 10, { color: C.warn });
 }
 
 function buildRectangular(w, data, now) {
   const { pick, wx, vpn } = data;
   const next = nextSlot(pick, now);
-  const prefix = pick.offset === 0 ? "" : pick.offset === 1 ? "Завтра " : `${cap(DOW_SHORT[pick.day.getDay()])} `;
-  txt(w, next ? `${prefix}${next.time} ${next.subject}` : "Пар нет", 14, { weight: "bold", scale: 0.7 });
+  const prefix = pick.offset === 0 ? "" : pick.offset === 1 ? "Завтра " : ("" + (cap(DOW_SHORT[pick.day.getDay()])) + " ");
+  txt(w, next ? ("" + (prefix) + (next.time) + " " + (next.subject)) : "Пар нет", 14, { weight: "bold", scale: 0.7 });
   const parts = [];
   if (next?.aud) parts.push(next.aud);
-  if (wx) parts.push(`${wx.temp}°`);
-  if (wx?.rain) parts.push(`${wx.rain.snow ? "снег" : "дождь"} ${pad(wx.rain.hh)}:00`);
+  if (wx) parts.push(("" + (wx.temp) + "°"));
+  if (wx?.rain) parts.push(("" + (wx.rain.snow ? "снег" : "дождь") + " " + (pad(wx.rain.hh)) + ":00"));
   txt(w, parts.join(" · ") || dayLabel(pick), 12, { scale: 0.7 });
-  if (vpn.level === "warn" || vpn.level === "danger") txt(w, `VPN: ${vpn.short}`, 12, { scale: 0.7 });
+  if (vpn.level === "warn" || vpn.level === "danger") txt(w, ("VPN: " + (vpn.short)), 12, { scale: 0.7 });
   else {
     const rest = pick.slots.filter((s) => !s.cancelled && (!next || s.n > next.n)).length;
-    txt(w, rest ? `потом ещё ${rest} ${plural(rest, "пара", "пары", "пар")}` : dayLabel(pick), 12, { scale: 0.7 });
+    txt(w, rest ? ("потом ещё " + (rest) + " " + (plural(rest, "пара", "пары", "пар"))) : dayLabel(pick), 12, { scale: 0.7 });
   }
 }
 
 function buildInline(w, data, now) {
   const next = nextSlot(data.pick, now);
-  const wx = data.wx ? ` · ${data.wx.temp}°` : "";
-  txt(w, next ? `${next.time} ${next.aud || next.subject}${wx}` : `Пар нет${wx}`, 12);
+  const wx = data.wx ? (" · " + (data.wx.temp) + "°") : "";
+  txt(w, next ? ("" + (next.time) + " " + (next.aud || next.subject) + (wx)) : ("Пар нет" + (wx)), 12);
 }
 
 function buildCircular(w, data, now) {
   w.addAccessoryWidgetBackground = true;
   const next = nextSlot(data.pick, now);
   const top = hrow(w, 0); top.addSpacer(); txt(top, next ? next.time : "—", 14, { weight: "bold", scale: 0.6 }); top.addSpacer();
-  const bottom = hrow(w, 0); bottom.addSpacer(); txt(bottom, next ? (next.aud || `${next.n} пара`) : "пар нет", 10, { scale: 0.6 }); bottom.addSpacer();
+  const bottom = hrow(w, 0); bottom.addSpacer(); txt(bottom, next ? (next.aud || ("" + (next.n) + " пара")) : "пар нет", 10, { scale: 0.6 }); bottom.addSpacer();
 }
 
 async function makeWidget(family) {
   const now = new Date();
   const [sch, wth] = await Promise.all([
-    loadJSON(`${CONFIG.dataUrl}?t=${Math.floor(now.getTime() / 600e3)}`, "schedule.json"),
+    loadJSON(("" + (CONFIG.dataUrl) + "?t=" + (Math.floor(now.getTime() / 600e3))), "schedule.json"),
     loadJSON(weatherUrl(), "weather.json"),
   ]);
   const schedule = sch.data;
@@ -407,7 +408,7 @@ async function makeWidget(family) {
     schedule, pick,
     wx: weatherFor(wth.data, pick, now),
     vpn: vpnState(now),
-    stale: sch.cached && schedule ? (() => { const u = new Date(schedule.updated); return `${u.getDate()} ${MON[u.getMonth()]} ${pad(u.getHours())}:${pad(u.getMinutes())}`; })() : null,
+    stale: sch.cached && schedule ? (() => { const u = new Date(schedule.updated); return ("" + (u.getDate()) + " " + (MON[u.getMonth()]) + " " + (pad(u.getHours())) + ":" + (pad(u.getMinutes()))); })() : null,
   };
 
   const w = new ListWidget();
@@ -436,11 +437,11 @@ async function menu() {
   const a = new Alert();
   a.title = "Утро";
   a.message = vpn.paidThis
-    ? `VPN оплачен, следующая оплата ${vpn.due.getDate()} ${MON_FULL[vpn.due.getMonth()]}`
-    : `VPN: оплата ${vpn.due.getDate()} ${MON_FULL[vpn.due.getMonth()]}, ${CONFIG.vpn.price} ₽`;
+    ? ("VPN оплачен, следующая оплата " + (vpn.due.getDate()) + " " + (MON_FULL[vpn.due.getMonth()]))
+    : ("VPN: оплата " + (vpn.due.getDate()) + " " + (MON_FULL[vpn.due.getMonth()]) + ", " + (CONFIG.vpn.price) + " ₽");
   const actions = [];
   if (vpn.paidThis) { a.addAction("Снять отметку об оплате"); actions.push("unpay"); }
-  else { a.addAction(`Оплатил VPN (${MON_FULL[thisDue.getMonth()]})`); actions.push("pay"); }
+  else { a.addAction(("Оплатил VPN (" + (MON_FULL[thisDue.getMonth()]) + ")")); actions.push("pay"); }
   a.addAction("Открыть дашборд"); actions.push("open");
   a.addAction("Показать маленький"); actions.push("small");
   a.addAction("Показать средний"); actions.push("medium");
