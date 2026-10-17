@@ -1,0 +1,32 @@
+name: Обновить расписание
+
+on:
+  schedule:
+    # Каждые 2 часа с 06:00 до 22:00 по Москве (cron в UTC).
+    - cron: "0 3-19/2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-schedule
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Скачать расписание
+        run: python morning.py --no-open
+      - name: Сохранить
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add schedule.js
+          git diff --cached --quiet || git commit -m "Обновить расписание"
+          git push
