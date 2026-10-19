@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-19T11:42+03:00",
+ "updated": "2026-10-19T19:22+03:00",
  "lessons": [
   {
    "date": "2026-09-29",
@@ -569,8 +569,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 326",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -580,8 +580,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.01.01 Разработка программных модулей",
    "teacher": "Ильин Ю.П.",
-   "aud": "",
-   "campus": "",
+   "aud": "301",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -591,8 +591,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.01.01 Разработка программных модулей",
    "teacher": "Ильин Ю.П.",
-   "aud": "",
-   "campus": "",
+   "aud": "301",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
