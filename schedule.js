@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-20T11:22+03:00",
+ "updated": "2026-10-20T17:13+03:00",
  "lessons": [
   {
    "date": "2026-09-29",
@@ -602,8 +602,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Физ. культура",
    "teacher": "Мадаев Р.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ск7",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -613,8 +613,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "325",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -624,8 +624,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "ТВиМС",
    "teacher": "Ежов Е.И.",
-   "aud": "",
-   "campus": "",
+   "aud": "439",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -635,8 +635,8 @@ window.SCHEDULE = {
    "sub": 1,
    "subject": "Ин. яз. в ПД",
    "teacher": "Вакулин А.И.",
-   "aud": "",
-   "campus": "",
+   "aud": "599б",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -646,8 +646,8 @@ window.SCHEDULE = {
    "sub": 2,
    "subject": "Ин. яз. в ПД",
    "teacher": "Кузнецова Л.И.",
-   "aud": "",
-   "campus": "",
+   "aud": "441",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
