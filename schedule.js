@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-21T11:26+03:00",
+ "updated": "2026-10-21T17:25+03:00",
  "lessons": [
   {
    "date": "2026-09-29",
@@ -659,7 +659,7 @@ window.SCHEDULE = {
    "teacher": "Тузова Д.А.",
    "aud": "403_П",
    "campus": "П",
-   "note": "",
+   "note": "поток",
    "zam": 0
   },
   {
@@ -670,7 +670,7 @@ window.SCHEDULE = {
    "teacher": "Тузова Д.А.",
    "aud": "403_П",
    "campus": "П",
-   "note": "",
+   "note": "поток",
    "zam": 0
   },
   {
