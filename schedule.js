@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-23T11:25+03:00",
+ "updated": "2026-10-23T17:10+03:00",
  "lessons": [
   {
    "date": "2026-09-29",
@@ -701,8 +701,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Програм. в 1С:Предпр. 8",
    "teacher": "Челищева Л.Н.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 335",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -712,8 +712,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Програм. в 1С:Предпр. 8",
    "teacher": "Челищева Л.Н.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 335",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -723,8 +723,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Правовое обеспечение ПД",
    "teacher": "Смекалова Ю.В.",
-   "aud": "",
-   "campus": "",
+   "aud": "249",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
