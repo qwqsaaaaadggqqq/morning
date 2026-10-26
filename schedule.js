@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-26T00:36+03:00",
+ "updated": "2026-10-26T11:44+03:00",
  "lessons": [
   {
    "date": "2026-09-29",
@@ -734,8 +734,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Правовое обеспечение ПД",
    "teacher": "Смекалова Ю.В.",
-   "aud": "",
-   "campus": "",
+   "aud": "249",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -745,8 +745,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.11.01 ТРиЗБД",
    "teacher": "Тузова Д.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "403_П",
+   "campus": "П",
    "note": "",
    "zam": 0
   },
@@ -756,8 +756,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.11.01 ТРиЗБД",
    "teacher": "Тузова Д.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "403_П",
+   "campus": "П",
    "note": "",
    "zam": 0
   },
