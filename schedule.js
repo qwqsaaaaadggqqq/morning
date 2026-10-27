@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-27T11:50+03:00",
+ "updated": "2026-10-27T18:15+03:00",
  "lessons": [
   {
    "date": "2026-10-13",
@@ -426,8 +426,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 320",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -437,8 +437,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 320",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -448,8 +448,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Физ. культура",
    "teacher": "Мадаев Р.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ск7",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
