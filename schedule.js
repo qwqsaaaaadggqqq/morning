@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-27T00:31+03:00",
+ "updated": "2026-10-27T11:50+03:00",
  "lessons": [
   {
    "date": "2026-10-13",
@@ -457,12 +457,12 @@ window.SCHEDULE = {
    "date": "2026-10-28",
    "n": 4,
    "sub": 0,
-   "subject": "Психология общения",
+   "subject": "ОТМЕНА",
    "teacher": "Саитова В.С.",
    "aud": "",
    "campus": "",
    "note": "",
-   "zam": 0
+   "zam": 1
   },
   {
    "date": "2026-10-29",
