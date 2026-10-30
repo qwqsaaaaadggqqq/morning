@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-10-30T02:12+03:00",
+ "updated": "2026-10-30T12:49+03:00",
  "lessons": [
   {
    "date": "2026-10-13",
@@ -537,7 +537,7 @@ window.SCHEDULE = {
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
    "aud": "",
-   "campus": "",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -547,8 +547,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Правовое обеспечение ПД",
    "teacher": "Смекалова Ю.В.",
-   "aud": "",
-   "campus": "",
+   "aud": "249",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -558,8 +558,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Физ. культура",
    "teacher": "Мадаев Р.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ск7",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
