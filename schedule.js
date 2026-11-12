@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-11-12T13:50+03:00",
+ "updated": "2026-11-12T21:46+03:00",
  "lessons": [
   {
    "date": "2026-10-26",
@@ -481,7 +481,7 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
+   "aud": "203",
    "campus": "Э",
    "note": "",
    "zam": 0
@@ -492,7 +492,7 @@ window.SCHEDULE = {
    "sub": 1,
    "subject": "Ин. яз. в ПД",
    "teacher": "Вакулин А.И.",
-   "aud": "",
+   "aud": "599б",
    "campus": "Э",
    "note": "",
    "zam": 0
@@ -514,7 +514,7 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.01.01 Разработка программных модулей",
    "teacher": "Ильин Ю.П.",
-   "aud": "",
+   "aud": "ВЦ 339",
    "campus": "Э",
    "note": "",
    "zam": 0
@@ -525,7 +525,7 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.01.01 Разработка программных модулей",
    "teacher": "Ильин Ю.П.",
-   "aud": "",
+   "aud": "ВЦ 339",
    "campus": "Э",
    "note": "",
    "zam": 0
@@ -536,8 +536,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "203",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -547,8 +547,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "203",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
