@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-11-13T03:02+03:00",
+ "updated": "2026-11-13T13:46+03:00",
  "lessons": [
   {
    "date": "2026-10-26",
@@ -558,8 +558,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 339",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -569,8 +569,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 339",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
