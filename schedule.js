@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-11-16T02:21+03:00",
+ "updated": "2026-11-16T13:53+03:00",
  "lessons": [
   {
    "date": "2026-10-26",
@@ -580,8 +580,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.01.01 Разработка программных модулей",
    "teacher": "Ильин Ю.П.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 335",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -591,8 +591,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.01.01 Разработка программных модулей",
    "teacher": "Ильин Ю.П.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 335",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -602,8 +602,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "ТВиМС",
    "teacher": "Ежов Е.И.",
-   "aud": "",
-   "campus": "",
+   "aud": "439",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -613,8 +613,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "ТВиМС",
    "teacher": "Ежов Е.И.",
-   "aud": "",
-   "campus": "",
+   "aud": "439",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
