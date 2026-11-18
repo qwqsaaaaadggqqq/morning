@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-11-18T00:38+03:00",
+ "updated": "2026-11-18T14:26+03:00",
  "lessons": [
   {
    "date": "2026-10-26",
@@ -668,8 +668,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.11.01 ТРиЗБД",
    "teacher": "Тузова Д.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "403_П",
+   "campus": "П",
    "note": "",
    "zam": 0
   },
@@ -679,8 +679,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "МДК.11.01 ТРиЗБД",
    "teacher": "Тузова Д.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "403_П",
+   "campus": "П",
    "note": "",
    "zam": 0
   },
