@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-11-18T14:26+03:00",
+ "updated": "2026-11-19T14:23+03:00",
  "lessons": [
   {
    "date": "2026-10-26",
@@ -193,23 +193,23 @@ window.SCHEDULE = {
    "date": "2026-11-02",
    "n": 2,
    "sub": 0,
-   "subject": "Правовое обеспечение ПД",
-   "teacher": "Смекалова Ю.В.",
-   "aud": "",
-   "campus": "",
-   "note": "",
-   "zam": 0
-  },
-  {
-   "date": "2026-11-02",
-   "n": 3,
-   "sub": 0,
    "subject": "Физ. культура",
    "teacher": "Мадаев Р.А.",
    "aud": "",
    "campus": "",
    "note": "",
-   "zam": 0
+   "zam": 1
+  },
+  {
+   "date": "2026-11-02",
+   "n": 3,
+   "sub": 0,
+   "subject": "ОТМЕНА",
+   "teacher": "Мадаев Р.А.",
+   "aud": "",
+   "campus": "",
+   "note": "",
+   "zam": 1
   },
   {
    "date": "2026-11-03",
@@ -690,8 +690,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Правовое обеспечение ПД",
    "teacher": "Смекалова Ю.В.",
-   "aud": "",
-   "campus": "",
+   "aud": "249",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -701,8 +701,8 @@ window.SCHEDULE = {
    "sub": 1,
    "subject": "Ин. яз. в ПД",
    "teacher": "Вакулин А.И.",
-   "aud": "",
-   "campus": "",
+   "aud": "509",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -712,8 +712,8 @@ window.SCHEDULE = {
    "sub": 2,
    "subject": "Ин. яз. в ПД",
    "teacher": "Кузнецова Л.И.",
-   "aud": "",
-   "campus": "",
+   "aud": "441",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
