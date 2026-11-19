@@ -1,6 +1,6 @@
 window.SCHEDULE = {
  "group": "24290907/3093",
- "updated": "2026-11-19T14:23+03:00",
+ "updated": "2026-11-20T00:18+03:00",
  "lessons": [
   {
    "date": "2026-10-26",
@@ -723,8 +723,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Програм. в 1С:Предпр. 8",
    "teacher": "Челищева Л.Н.",
-   "aud": "",
-   "campus": "",
+   "aud": "ВЦ 341",
+   "campus": "Э",
    "note": "",
    "zam": 0
   },
@@ -734,8 +734,8 @@ window.SCHEDULE = {
    "sub": 0,
    "subject": "Компьютерные сети",
    "teacher": "Ольнев А.А.",
-   "aud": "",
-   "campus": "",
+   "aud": "203",
+   "campus": "Э",
    "note": "",
    "zam": 0
   }
